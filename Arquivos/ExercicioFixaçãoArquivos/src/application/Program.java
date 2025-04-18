@@ -1,0 +1,44 @@
+package application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.entities.Product;
+
+public class Program {
+
+	public static void main(String[] args) {
+		String path = "c:\\temp\\pathh.csv";
+		List<Product> products = new ArrayList<>();
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(path))){
+			String linha;
+			
+			while ((linha = br.readLine()) != null) {
+				String[] partes = linha.split(",");
+				
+				
+				String nome = partes[0];
+				double price = Double.parseDouble(partes[1]);
+				int quantity = Integer.parseInt(partes[2]);
+				
+				Product product = new Product(nome, price, quantity);
+				products.add(product);
+			}
+		}
+		catch (IOException e) {
+        e.printStackTrace();
+    }
+		
+		for (Product p: products) {
+			System.out.print("Product Name: "+ p.getName());
+			System.out.print("Price: " + p.finalPrice());
+			System.out.println("");
+			
+		}
+	}
+
+}
