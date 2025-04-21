@@ -1,0 +1,45 @@
+package application;
+
+import java.text.ParseException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.Scanner;
+
+import model.entities.Contract;
+import model.entities.Fatura;
+import model.services.ContractService;
+import model.services.PayPalService;
+
+public class Program {
+
+	public static void main(String[] args) throws ParseException {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		
+		System.out.println("Digite os dados do contratro");
+		System.out.print("Número: ");
+		int number = sc.nextInt();
+		System.out.print("Data (dd/MM/yyyy)");
+		String dateString = sc.nextLine();
+		LocalDate enterDate = LocalDate.parse(dateString, formatter);
+		System.out.print("Valor do contrato");
+		double valueContract = sc.nextDouble();
+		Contract contract = new Contract(number, enterDate, valueContract);
+		System.out.print("Entre com o número de parcelas: ");
+		int parcelas = sc.nextInt();
+		
+		ContractService contractService = new ContractService(new PayPalService());
+		contractService.processContract(contract, parcelas);
+		
+		System.out.println("Faturas: ");
+		for(Fatura f: contract.parcelas) {
+			System.out.println("Fatura: "+ f.getAmount() + f.getDueDate());
+			
+		}
+		sc.close();
+	}
+
+}

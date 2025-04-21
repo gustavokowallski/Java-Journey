@@ -1,0 +1,10 @@
+package devices;
+
+public class ComboDevice extends ConcretScanner{
+	
+	
+	public ComboDevice(String serialNumber) {
+		super(serialNumber);
+	}
+
+}

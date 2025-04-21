@@ -1,0 +1,45 @@
+package model.services;
+
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
+import model.entities.Contract;
+import model.entities.Fatura;
+
+public class ContractService {
+	
+	private OnlinePaymentService ops;
+
+	public ContractService(OnlinePaymentService ops) {
+
+		this.ops = ops;
+	}
+	public void processContract(Contract contract, Integer months, OnlinePaymentService ops ) {
+		double divisor = contract.getTotalValue() / months;
+		double[] faturas = new double[months];
+		LocalDate dateAtual= contract.getDate();
+		LocalDate[] datas = new Date[months];
+		double finalValue =0;
+		faturas[0]= divisor;
+		
+		for (int i = 0; i<months; i++) {
+			
+			
+			finalValue = faturas[i] * (0.01 *(i+1));
+		
+			
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(dateAtual);
+			cal.add(Calendar.MONTH, i+1);
+			datas[i]= cal.getTime();
+			contract.addFatura(null);
+			Fatura fatura = new Fatura(cal.getTime(), finalValue);
+			
+		}
+		
+		
+		
+		
+	}
+}

@@ -1,0 +1,26 @@
+package devices;
+
+public class ComboDevice extends Device implements Scanner,Printer{
+	
+	
+	public ComboDevice(String serialNumber) {
+		super(serialNumber);
+	}
+
+	@Override
+	public void print(String doc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public String scan() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void processDoc(String doc) {
+		// TODO Auto-generated method stub
+	}
+	
+
+}

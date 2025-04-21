@@ -1,0 +1,14 @@
+package devices;
+
+public class Scanner extends Device {
+
+	@Override
+	public void processDoc(String doc) {
+		System.out.println("Scanner processing" + doc);
+	
+	}
+	public void print(String doc) {
+		System.out.println("Scanning: " + doc);
+	}
+
+}

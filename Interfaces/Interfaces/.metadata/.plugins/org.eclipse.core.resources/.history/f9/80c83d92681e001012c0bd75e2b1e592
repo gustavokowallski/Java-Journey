@@ -1,0 +1,24 @@
+package model.entities;
+
+public class FreteExpressoService implements FreteService {
+
+	public FreteExpressoService() {
+
+	}
+
+	@Override
+	public double calculo(double peso) {
+		double frete=0;
+		if(peso < 10 ) {
+			frete = peso *20;
+		}
+		else {
+			frete = peso *15;
+		}
+		return frete;
+	}
+
+
+	
+	
+}

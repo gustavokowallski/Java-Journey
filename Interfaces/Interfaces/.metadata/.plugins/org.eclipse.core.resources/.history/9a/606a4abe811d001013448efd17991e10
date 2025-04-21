@@ -1,0 +1,40 @@
+package application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import model.entities.Employee;
+
+public class Program {
+
+    public static void main(String[] args) {
+        List<Employee> list = new ArrayList<>();
+        String path = "C:\\temp\\in.txt";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+            String employeeCsv = br.readLine(); // Lê a primeira linha
+        
+
+            while (employeeCsv != null) {
+            	String[] fields = employeeCsv.split(","); // cria um vetor que le a linha e divide os dados em 2.
+                
+            	list.add(new Employee(fields[0], Double.parseDouble(fields[1]))); // transforma o valor em double. para passar para o construtor
+            	employeeCsv = br.readLine(); // Lê a próxima linha
+            }
+
+            Collections.sort(list); // Ordena a lista em ordem alfabética
+
+            for (String s : list) {
+                System.out.println(s);
+            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+

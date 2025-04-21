@@ -1,0 +1,6 @@
+package model.services;
+
+public class OnlinePaymentServices {
+	private Double paymentFee;
+	private Double interest;
+}

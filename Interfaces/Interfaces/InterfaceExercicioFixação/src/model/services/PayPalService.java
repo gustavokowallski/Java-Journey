@@ -1,0 +1,19 @@
+package model.services;
+
+public class PayPalService implements OnlinePaymentService{
+	
+	
+	public double paymentFee(double amount) {
+		return  amount * 0.02;
+	}
+	
+	public double interest(double amount, int months) { // o metódo juros retorna um valor vezes o número de meses
+		
+		double value =amount;
+		double result =0;
+		for (int i=1; i<=months; i++) {
+			 result = value * (0.01 *i);
+	}
+		return result;
+}
+	}

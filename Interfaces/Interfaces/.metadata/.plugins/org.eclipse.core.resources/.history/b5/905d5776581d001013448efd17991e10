@@ -1,0 +1,23 @@
+package application;
+
+
+
+import devices.Printer;
+import devices.ConcretScanner;
+
+public class Program {
+
+	public static void main(String[] args) {
+		 
+		Printer p= new Printer("1080");
+		p.processDoc("My Letter");
+		p.print("MyLetter");
+		
+		ConcretScanner s = new ConcretScanner("1080");
+		p.processDoc("My Emaial");
+		System.out.println("Scan result: " + s.scan());
+		
+
+	}
+
+}

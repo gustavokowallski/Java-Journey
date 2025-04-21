@@ -1,0 +1,25 @@
+package application;
+
+import java.util.Locale;
+import java.util.Scanner;
+
+import entities.BrasilInterestService;
+import entities.InterestService;
+
+public class Program {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		double amount = sc.nextDouble();
+		int months = sc.nextInt();
+		
+		InterestService is = new BrasilInterestService(2.0);
+		is.
+		
+		
+		sc.close();
+
+	}
+
+}

@@ -1,0 +1,25 @@
+package model.services;
+
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
+
+import model.entities.Contract;
+import model.entities.Fatura;
+
+public class ContractService {
+	
+	private OnlinePaymentService ops;
+
+	public ContractService(OnlinePaymentService ops) {
+
+		this.ops = ops;
+	}
+	public void processContract(Contract contract, Integer months) {
+		
+		
+		
+		
+		
+	}
+}
